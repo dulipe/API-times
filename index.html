@@ -5,16 +5,20 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="index.css">
-    <title>DADOS DE TIMES</title>
+    <title>DADOS DE TIMES DO MUNDO</title>
 </head>
 <body>
     <header>
-        <a href="">Times</a>
+        <a href="#">Times</a>
         <a href="">Jogadores</a>
     </header>
     <div id="input">
-        <input type="text" name="team" id="team">
-        <button>Pesquisar</button>
+        <input type="text" name="team" id="teamName" placeholder="Digite aqui">
+        <button onclick="search()"><strong>PESQUISAR</strong></button>
     </div>
+
+    <div class="resultado"></div>
+
+    <script src="index.js"></script>
 </body>
 </html>
