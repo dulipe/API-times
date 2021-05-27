@@ -100,25 +100,25 @@ function teamInfo(){
 
             
 
-            // algumas condições funcionam com dois '==' e outras com estritamente igual ""==="", então vou deixar todos estritamente "==="
+            // condições descrição
 
-            if (estadio.value === null) {
+            if (data.teams[i].strStadiumDescription === null) {
                 estadio.innerHTML= 'Sem dados do estadio'
             }
 
-            if (descricaoEstadio.value === null) {
+            if (data.teams[i].strStadiumDescription === null) {
                 descricaoEstadio.innerHTML= 'Sem descrição do estadio'
             }
 
-            if (FotoEstadio.value === null) {
+            if (data.teams[i].strStadiumThumb === null) {
                 FotoEstadio.setAttribute('alt', 'sem foto do estadio')
             }
 
-            if (capacidadeEstadio.value === null) {
+            if (data.teams[i].intStadiumCapacity === null) {
                 capacidadeEstadio.innerHTML= 'Sem dados da capacidade do estadio'
             }
 
-            if (cidade.value === null) {
+            if (data.teams[i].strStadiumLocation === null) {
                 cidade.innerHTML= 'Sem dados da cidade'
             }
             
@@ -128,43 +128,57 @@ function teamInfo(){
             div.setAttribute('class', 'teamDados')
             div.append(nome, logo, liga, esporte, estadio, descricaoEstadio, FotoEstadio, capacidadeEstadio, cidade, descriçãoTime, país, galeria, galeria1, galeria2, galeria3, galeria4, galeria5, galeria6, galeria7, youtube, facebook, instagram, twitter)
 
-            // condição da galeria, se o valor for 'null', excluir "tive o mesmo problema do estritamente igual "
+            // condição da galeria
 
-            if (galeria.value === null) {
+            if (data.teams[i].strTeamBadge === null) {
                 galeria.removeAttribute('src')
             }
 
-            if (galeria1.value === null) {
+            if (data.teams[i].strTeamJersey === null) {
                 galeria1.removeAttribute('src')
             }
 
-            if (galeria2.value === null) {
+            if (data.teams[i].strTeamLogo === null) {
                 galeria2.removeAttribute('src')
             }
 
-            if (galeria3.value === null) {
+            if (data.teams[i].strTeamFanart1 === null) {
                 galeria3.removeAttribute('src')
             }
 
-            if (galeria4.value === null) {
+            if (data.teams[i].strTeamFanart2 === null) {
                 galeria4.removeAttribute('src')
             }
 
-            if (galeria5.value === null) {
+            if (data.teams[i].strTeamFanart3 === null) {
                 galeria5.removeAttribute('src')
             }
 
-            if (galeria6.value === null) {
+            if (data.teams[i].strTeamFanart4 === null) {
                 galeria6.removeAttribute('src')
             }
 
-            if (galeria7.value === true) {
+            if (data.teams[i].strTeamBanner === null) {
                 galeria7.removeAttribute('src')
             }
 
             // condições das redes sociais
             
-            
+            if (data.teams[i].strYoutube === '') {
+                youtube.innerText = ''
+            }
+
+            if (data.teams[i].strFacebook === '') {
+                facebook.innerText = ''
+            }
+
+            if (data.teams[i].strInstagram === '') {
+                instagram.innerText = ''
+            }
+
+            if (data.teams[i].strTwitter === '') {
+                twitter.innerText = ''
+            }
 
             // apender no html
             document.querySelector('.time').append(div)
