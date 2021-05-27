@@ -17,12 +17,12 @@ function search(){
             liga.append(data.teams[i].strLeague)
             logo.setAttribute('src', data.teams[i].strTeamBadge)
             id.append(data.teams[i].idTeam)
-            id.setAttribute('id', 'teamID')
-
+            id.setAttribute('class', 'teamID')
+            
             // apender informações dentro de uma div
             const div = document.createElement('div')
             div.setAttribute('class', 'teamInfo')
-            div.append(logo, id, nome, liga, esporte,)
+            div.append(logo, nome, liga, esporte, id)
             div.addEventListener('click', teamInfo)
 
             // apender no html
@@ -33,11 +33,11 @@ function search(){
 }
 
 function teamInfo(){
-    const teamID = document.querySelector('#teamID').innerText;
+    const teamID = document.querySelector('.teamID').innerHTML
     document.querySelector('.resultado').innerHTML = ''
 	fetch(`https://www.thesportsdb.com/api/v1/json/1/lookupteam.php?id=${teamID}`).then(res => res.json()).then(data =>{
+        console.log(data)
         for (let i = 0; i < data.teams.length; i++) {
-            console.log(data.teams)
             // criação das strings e logo
             let nome = document.createElement('p')
             let esporte = document.createElement('p')
