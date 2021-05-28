@@ -3,6 +3,7 @@ function search(){
     document.querySelector('.resultado').innerHTML = ''
     document.querySelector('.jogador').innerHTML = ''
 	fetch(`https://www.thesportsdb.com/api/v1/json/1/searchplayers.php?p=${nomeDoJogador}`).then(res => res.json()).then(data =>{
+        console.log(data)
         for (let i = 0; i < data.player.length; i++) {
             // criação das strings e logo
             let foto = document.createElement('img')
@@ -120,14 +121,32 @@ function playerInfo(){
                 galeria7.removeAttribute('src')
             }
             
-            
+            //condições redes sociais
+
+            if (data.players[i].strInstagram === '') {
+                instagram.innerText = ''
+            }
+            if (data.players[i].strFacebook === '') {
+                facebook.innerText = ''
+            }
+            if (data.players[i].strFacebook === '') {
+                twitter.innerText = ''
+            }
+
+            //condição iframe
+            let chuteira = data.players[i].strKit
+            if (data.players[i].strKit === '') {
+                iframe.setAttribute('src',  `https://www.zoom.com.br/search?q=chuteira`)
+            } else {
+                iframe.setAttribute('src',  `https://www.zoom.com.br/search?q=${chuteira}`)
+            }
             
             
             
             // apender informações dentro de uma div
             const div = document.createElement('div')
             div.setAttribute('class', 'jogadorDados')
-            div.append(nome, foto, galeria1, galeria2, galeria3, galeria4, galeria5, galeria6, galeria7, instagram, facebook, twitter, altura, peso, posição, descrição, local, nascimento, nacionalidade, time)
+            div.append(nome, foto, galeria1, galeria2, galeria3, galeria4, galeria5, galeria6, galeria7, instagram, facebook, twitter, altura, peso, posição, descrição, local, nascimento, nacionalidade, time, iframe)
 
             // apender no html
             document.querySelector('.jogador').append(div)
