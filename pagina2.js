@@ -3,7 +3,6 @@ function search(){
     document.querySelector('.resultado').innerHTML = ''
     document.querySelector('.jogador').innerHTML = ''
 	fetch(`https://www.thesportsdb.com/api/v1/json/1/searchplayers.php?p=${nomeDoJogador}`).then(res => res.json()).then(data =>{
-        console.log(data)
         for (let i = 0; i < data.player.length; i++) {
             // criação das strings e logo
             let foto = document.createElement('img')
@@ -14,8 +13,6 @@ function search(){
 
             // apender informações nos elementos criados
             foto.setAttribute('src', data.player[i].strCutout)
-            id.append(data.player[i].idPlayer)
-            id.setAttribute('id', 'jogadorID')
             nome.append(data.player[i].strPlayer)
             time.append(data.player[i].strTeam)
 
@@ -28,7 +25,9 @@ function search(){
             const div = document.createElement('div')
             div.setAttribute('class', 'playerInfo')
             div.append(foto, id, nome, time)
-            div.addEventListener('click', playerInfo)
+            div.setAttribute('id', data.player[i].idPlayer)
+            div.setAttribute('onclick', 'playerInfo(this.id)')
+            
 
             // apender no html
             document.querySelector('.resultado').append(div)
@@ -37,10 +36,9 @@ function search(){
 	})
 }
 
-function playerInfo(){
-    const idJogador = document.querySelector('#jogadorID').innerText;
+function playerInfo(param){
     document.querySelector('.resultado').innerHTML = ''
-	fetch(`https://www.thesportsdb.com/api/v1/json/1/lookupplayer.php?id=${idJogador}`).then(res => res.json()).then(data =>{
+	fetch(`https://www.thesportsdb.com/api/v1/json/1/lookupplayer.php?id=${param}`).then(res => res.json()).then(data =>{
         for (let i = 0; i < data.players.length; i++) {
             // criação das strings e fotos
             let nome = document.createElement('p')
