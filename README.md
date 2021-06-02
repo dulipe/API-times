@@ -4,6 +4,7 @@
 * Fiz uma requisição de api do site https://www.thesportsdb.com/api.php?ref=apilist.fun
 * Site responsivo com Media Queries
 * Foi usado apenas HTML, CSS e Java Script puro
+* Link do site https://dulipe.github.io/API-times/
 
 
 
